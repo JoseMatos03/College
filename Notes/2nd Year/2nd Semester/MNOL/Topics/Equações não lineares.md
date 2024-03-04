@@ -89,7 +89,7 @@ Esta é a **equação iterativa** do método de Newton.
 Deve ser implementada para $k=1,2,…$
 
 #### Condições De Convergência
-O metodo iterativo da secante nem sempre converge.
+O método iterativo da secante nem sempre converge.
 Só é possível garantir convergência para a solução se:
 - $x^*$ é tal que $f(x^*)=0$
 - $f(x)$ é continuamente diferenciável
