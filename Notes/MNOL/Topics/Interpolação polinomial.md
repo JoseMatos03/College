@@ -12,7 +12,7 @@ pretende-se encontrar uma _relação funcional_ (expressão) entre as variáveis
 2. Dada uma função complicada (expressão) $f(x)$, pretende-se conhecer uma expressão mais simples que descreva o melhor possível comportamento de $f$ como função de $x$.
 
 ## Erro da Aproximação $e(x)=f(x)-p_n(x)$
-**Teorema de Weirstrass:** Dadas a função $f(x)$, contínua num intervalo $[a,b]$, e uma quantidade $\varepsilon > 0$, existe sempre um polinómio $p_n(x)$, de grau $\leq n$, tal que o **erro** da aproximação $||f(x)-p_n(x)||<\varepsilon$.
+**Teorema de Weirstrass:** Dadas a função $f(x)$, contínua num intervalo $[a,b]$, e uma quantidade $\varepsilon > 0$, existe sempre um polinómio $p_n(x)$, de grau $\leq n$, tal que o [[Erros|erro]] da aproximação $||f(x)-p_n(x)||<\varepsilon$.
 1. Podemos assegurar que o erro seja igual a zero para um conjunto de $n+1$ pontos selecionados do intervalo $[a,b]$, isto é, o polinómio passa por esses $n+1$ pontos da função,
 
 $$
