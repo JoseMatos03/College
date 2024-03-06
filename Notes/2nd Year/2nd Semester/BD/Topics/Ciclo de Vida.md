@@ -19,11 +19,11 @@ Aqui, o foco está na criação de um modelo conceitual da base de dados, que de
 ## 4. [[Modelação Lógica]]
 Na modelação lógica, o modelo conceitual é traduzido em um esquema de base de dados mais detalhado, utilizando um modelo de dados específico (como o modelo relacional). Isso inclui a normalização do esquema para garantir a integridade e eficiência dos dados.
 
-## 5. **Implementação Física**
+## 5. [[Implementação Física]]
 Aqui, o esquema de base de dados é implementado em um sistema de gerenciamento de banco de dados (SGBD) específico. Isso inclui a criação de tabelas, definição de índices, configuração de restrições de integridade referencial, entre outras tarefas técnicas.
 
-## 6. **Exploração**
+## 6. [[Exploração]]
 Nesta fase, a base de dados é testada para garantir que atenda aos requisitos especificados e funcione conforme o esperado. Isso inclui testes de funcionalidade, desempenho, segurança e usabilidade.
 
-## 7. **Monitorização**:
+## 7. [[Monitorização]]
 Após a implantação da base de dados, é importante monitorar continuamente seu desempenho e integridade. Isso envolve monitorar métricas de desempenho, identificar e corrigir problemas de forma proativa e garantir a segurança e a disponibilidade dos dados.
