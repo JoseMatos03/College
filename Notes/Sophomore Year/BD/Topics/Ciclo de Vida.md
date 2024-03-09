@@ -13,7 +13,7 @@ Esta etapa envolve compreender o contexto e as necessidades que a base de dados 
 ## 2. [[Definição de Requisitos]]
 Nesta fase, os requisitos específicos da base de dados são identificados e documentados. Isso inclui requisitos funcionais (o que o sistema deve fazer) e requisitos não funcionais (restrições de desempenho, segurança, etc.).
 
-## 3. [[Modelação Conceitual]]
+## 3. [[Modelação Conceptual]]
 Aqui, o foco está na criação de um modelo conceitual da base de dados, que descreve as entidades, atributos e relacionamentos de alto nível. Ferramentas como diagramas entidade-relacionamento (ER) são comumente utilizadas nesta etapa.
 
 ## 4. [[Modelação Lógica]]
