@@ -74,3 +74,32 @@ Aparecem, assim, as **system calls**.
 	- Programa pede para ler o periférico
 	- SO devolve o conteúdo de um cartão que foi copiado para banda magnética ou lido anteriormente para memória (SPOOL)
 Mais tarde aparece a **multiprogramação**.
+
+### Primeiros Sistemas de Batch
+Processador auxiliar faz IO de periféricos lentos (virtuais)
+- Carregar cartões no 1401, que os copia para banda magnética
+- Colocar banda no 7094 e executar os programas
+- Recolher banda com resultados do batch e colocá-la na 1401, que os envia para a impressora
+![[Screenshot 2024-03-09 at 19.14.21.png]]
+
+## Multiprogramação
+- Memória central dividida em várias zonas (partições);
+- Vários jobs simultaneamente em memória mas não "vêem" os outros;
+- Isto permite executar concorrentemente vários processos, repartindo o tempo de CPU entre eles.
+![[Screenshot 2024-03-09 at 19.17.20.png]]
+**Proteção de memória**
+![[Screenshot 2024-03-09 at 19.16.50.png]]
+Note que estes teste têm de ser feitos sempre que há um acesso à memória até 4 vezes por instrução.
+
+## Multiprocessamento
+A ideia é executar mais carga no mesmo intervalo de tempo (aumentar o _throughput_). **Não é** executar um programa mais depressa (baixar o seu _tempo de resposta_). Para isso é preciso dividir uma aplicação em vários processos e executar cada um no seu CPU/core.
+No entanto, consegue reduzir o tempo de espera até ter acesso a um CPU.
+
+Arquitetura:
+- Simétrica:
+	- qualquer CPU pode executar código do SO
+	- cuidado com _race conditions_ (acesso à tabela de blocos de memória livres)
+	- hardware mais sofisticado (disco interrompe todos os CPUs)
+- Assimétrico
+	- Periféricos associados a um só CPU, o que executa o SO
+	- CPUs podem estar parados porque o SO não "despacha"
