@@ -1,4 +1,3 @@
-## Limite
 
 **Intuitivamente**, dizemos que
 

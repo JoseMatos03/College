@@ -1,6 +1,4 @@
-## Derivação de Funções Compostas
-
-### Regra da Cadeia em $\R$
+## Regra da Cadeia em $\R$
 
 Se $\green g$ é derivável em $\green{a\in I}$ e $\green f$ é derivável em $\green{b=g(a)\in J}$, então a função composta $\green{f \circ g}$ é derivável em $\green{a\in I}$ e a sua derivada é o produto das derivadas das funções $\green g$ e $\green f$, cada uma delas no ponto respetivo:
 
@@ -8,7 +6,7 @@ $$
 (f \circ g)^{\prime}(a)=f^{\prime}(g(a)) g^{\prime}(a)=f^{\prime}(b) g^{\prime}(a), a \in I
 $$
 
-### Regra da Cadeia em $\R^2$
+## Regra da Cadeia em $\R^2$
 
 **Caso 1**
 
@@ -36,7 +34,7 @@ $$
 \begin{aligned}& \frac{\partial h}{\partial s}(\alpha, \beta)=\frac{\partial f}{\partial x}(a, b) \underbrace{\frac{\partial \phi}{\partial s}(\alpha, \beta)}_{\frac{\partial x}{\partial s}(\alpha, \beta)}+\frac{\partial f}{\partial y}(a, b) \underbrace{\frac{\partial \psi}{\partial s}(\alpha, \beta)}_{\frac{\partial y}{\partial s}(\alpha, \beta)} \\& \frac{\partial h}{\partial t}(\alpha, \beta)=\frac{\partial f}{\partial x}(a, b) \underbrace{\frac{\partial \phi}{\partial t}(\alpha, \beta)}_{\frac{\partial x}{\partial t}(\alpha, \beta)}+\frac{\partial f}{\partial y}(a, b) \underbrace{\frac{\partial \psi}{\partial t}(\alpha, \beta)}_{\frac{\partial y}{\partial t}(\alpha, \beta)}\end{aligned}
 $$
 
-### Regra da Cadeia Geral
+## Regra da Cadeia Geral
 
 ![Untitled](Aula%206%20b28e3cb89d9247a8976379c4366a0910/Untitled.png)
 

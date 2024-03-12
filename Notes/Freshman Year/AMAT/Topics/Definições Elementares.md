@@ -1,4 +1,4 @@
-## Definições Elementares
+
 
 Uma função real de $n$ variáveis reais é uma aplicação
 
@@ -12,7 +12,7 @@ $$
 - $U \sub \R^n$ é o domínio.
 - $\R$ é o conjunto de chegada.
 
-### Contradomínio
+## Contradomínio
 
 O **contradomínio** de $f$ é o conjunto $CD_f\sub\R$ constituído por todas as imagens de $f$:
 
@@ -24,7 +24,7 @@ $$
 
 Dada $f:D\longrightarrow\R$, dizemos que
 
-### Injetividade
+## Injetividade
 
 - $f$ é **injetiva** quando a objetos distintos em $D$, correspondem imagens distintas em $\R$
 
@@ -32,7 +32,7 @@ $$
 \forall\bold{x,y}\in D,\space\space\bold{x}\neq\bold{y}\Longrightarrow f(\bold{x})\neq f(\bold y)
 $$
 
-### Sobrejetividade
+## Sobrejetividade
 
 - $f$ é **sobrejetiva** quando o seu contradomínio coincide com o conjunto de chegada
 
@@ -40,13 +40,13 @@ $$
 \forall a\in \R,\space\space\exists\bold{x}\in D:f(\bold{x}) = a
 $$
 
-### Bijetividade
+## Bijetividade
 
 - $f$ é **bijetiva** quando é simultaneamente injetiva e sobrejetiva.
 
 ---
 
-### Limitações
+## Limitações
 
 - $f$ é **minorada** quando
 
@@ -70,7 +70,7 @@ $$
 
 Sejam $f:D\longrightarrow\R$ e $A,S\sub\R^n$ dois subconjuntos tais que $A\sub D\sub S$:
 
-### Restrição
+## Restrição
 
 - chama-se **restrição** de $f$ a $A$ à função
 
@@ -78,7 +78,7 @@ $$
 f|_A:A\longrightarrow\R\text{ tal que } (f|_A)(\bold{x}) = f(\bold{x}), \forall\bold{x}\in A
 $$
 
-### Extensão
+## Extensão
 
 - chama-se **extensão** ou **prolongamento** de $f$ a $S$ à função
 
@@ -90,7 +90,7 @@ $$
 
 Sejam $f:D\longrightarrow\R$ e dois subconjuntos de $A$ e $B$, não vazios, com $A\sub D$ e $B\sub R$:
 
-### Imagem
+## Imagem
 
 - chama-se **imagem** de $A$ por $f$ ao conjunto
 
@@ -98,7 +98,7 @@ $$
 f(A)=\{w\in\R:w=f(\bold{x})\space\text{ e }\space\bold{x}\in A\}\sub f(D)
 $$
 
-### Imagem Recíproca
+## Imagem Recíproca
 
 - chama-se **imagem recíproca** de $B$ por $f$ ao conjunto
 

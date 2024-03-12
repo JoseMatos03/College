@@ -4,3 +4,4 @@
 3. [[Sistemas de equações lineares]]
 4. [[Sistemas de equações não lineares]]
 5. [[Interpolação polinomial]]
+6. [[Interpolação Spline]]

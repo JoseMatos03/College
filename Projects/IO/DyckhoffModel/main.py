@@ -1,3 +1,4 @@
+# --- Variable definitions ---
 class Variable:
     def __init__(self, coefficient, name, cut_range):
         # coefficient: int
@@ -23,8 +24,29 @@ def add(var1, var2):
         raise ValueError("Cut ranges are not the same")
     return Variable(var1.coefficient + var2.coefficient, var1.name, var1.cut_range)
 
+# ---------------------------
 
-def objective_function(S, D, R):
+
+def get_A(l, S, D, R):
+    if l not in D:
+        return []
+    A = [k for k in S or R if k > l]
+
+    return A
+
+def get_B(l, S, D, R):
+    B = [k for k in D if (k + l in S) or (k + l in R)]
+    return B
+
+def get_C(l, D):
+    C = [k for k in D if k < l ]
+    return C
+
+# TODO
+def get_R(S, D):
+    pass
+
+def min_function(S, D, R):
     min = []
 
     for l in S:
@@ -37,20 +59,6 @@ def objective_function(S, D, R):
             min.append(Variable(-S[l], "x", (k + l, k)))
 
     return min
-
-def reduce_min(min):
-    t_remove = []
-    for (i, var) in enumerate(min):
-        for (j, var2) in enumerate(min[i+1:]):
-            if (j in t_remove) or (i in t_remove):
-                continue
-            if var == var2:
-                min[i] = add(var, var2)
-                t_remove.append(j)
-                break
-
-    for i in t_remove[::-1]:
-        min.pop(i)
 
 def get_constraint(l, S, D, R):
     constraint = []
@@ -80,31 +88,8 @@ def get_constraints(S, D, R):
 
     return constraints
 
-def remove_duplicates(constraints):
-    for (i, constraint) in enumerate(constraints):
-        for (j, var) in enumerate(constraint):
-            if var in constraint[j+1:]:
-                constraint.remove(var)
 
-
-# TODO NOT RIGHT
-def get_R(S, D):
-    R = [k for k in D if k in S]
-    return R
-
-def get_A(l, S, D, R):
-    if l not in D:
-        return []
-    A = [k for k in S or R if k > l]
-    return A
-
-def get_B(l, S, D, R):
-    B = [k for k in D if k + l in S or k + l in R]
-    return B
-
-def get_C(l, D):
-    C = [k for k in D if k < l ]
-    return C
+# --- Printing functions ---
 
 def print_min(min):
     print("min: ", end="")
@@ -124,19 +109,18 @@ def print_model(min, constraints):
     print()
     print_constraints(constraints)
 
-def run():
-    S = {11: 11, 10: 10, 7: 7}
-    D = {5: 5, 4: 9, 3: 0, 2: 13, 1: 0}
-    R = [10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+# ---------------------------
 
-    min = objective_function(S, D, R)
-    # reduce_min(min)
+
+def run():
+    S = {5: 6, 6: 7, 9: 10}
+    D = {2: 20, 3: 10, 4: 20}
+    R = [7, 6, 5, 4, 3, 2]
+
+    min = min_function(S, D, R)
     constraints = get_constraints(S, D, R)
-    for _ in range(5):
-        remove_duplicates(constraints)
 
     print_model(min, constraints)
-
 
 if __name__ == "__main__":
     run()
