@@ -103,4 +103,125 @@ Processos em execução podem ser desafetados.
 	- Carrega contexto do processo escolhido e regressa (executa o `return`)
 
 ### Escalonamento de Processos
+Quando, uma vez atribuído a um processo, o CPU nunca lhe é retirado então diz-se que o escalonamento é **cooperativo**. (_non-preemptive_)
+- Exemplos: Windows 3.1 / co-rotinas / `thread_yield()`.
+Quando o CPU pode ser retirado a um processo ao fim do _quantum_ ou porque surgiu outro de maior prioridade diz-se que o escalonamento é com **desafetação forçada**. (_preemptive_)
+
+Escalonamento **cooperativo**:
+- "poor man's approach to multitasking"
+- sensível às variações de carga
+Escalonamento com **desafetação forçada**:
+- sistema "responde" melhor
+- comutação de contexto tem _overhead_
+
+#### Modelo de Sistema Interativo
+![[Screenshot 2024-03-13 at 02.19.39.png]]
+
+##### Tempo de Resposta (carga homogénea)
+![[Screenshot 2024-03-13 at 02.20.24.png]]
+
+##### Tempo de Resposta (carga heterogénia)
+![[Screenshot 2024-03-13 at 02.20.54.png]]
+Para evitar que as interações longas monopolizem o CPU e aumentem o tempo de resposta das restantes deve usar-se desafetação forçada.
+Neste caso deve atribuir-se um _quantum_ (ou _time slice_) para permitir a troca rápida de processos:
+- Interações curtas terminam dentro dessa fatia de tempo, logo não são afetadas pela política de desafetação.
+- Interações longas executam durante um quantum e a seguir o processo correspondente regressa ao estado de **pronto a executar**, dando a vez a outros processos. Mais tarde ser-lhe-á atribuído uma nova fatia de tempo, e sucessivamente até a interação terminar.
+
+###### Duração da Fatia de Tempo
+Maioria das interações deve "caber" num _quantum_.
+
+$$
+R = W + C
+$$
+
+Se precisar de 2 passagens pelo CPU, $T_{\text{resposta}}$ é quase o dobro.
+
+$$
+R = W + q + W + c'
+$$
+
+![[Screenshot 2024-03-13 at 02.26.15.png]]
+___
+
+#### Definições
+- Escalonadores de longo-prazo (segundos, minutos) e de curto-prazo (milisegundos);
+- _Processo CPU-bound_: processo que faz pouco I/O mas requer muito processamento;
+- _Processo I/O-bound_: processo que está frequentemente à espera de I/O.
+
+- Os processos prontos são seriados numa fila (_ready list_);
+- A lista é uma lista ligada de apontadores para PCB's;
+- A lista poderá estar ordenada por vários critérios de forma a dar tratamento preferencial a alguns processos.
+
+Quando um processo é escalonado, é retirado da _ready list_ e posto a executar.
+Pode "perder" o CPU por 2 razões:
+- Faz um pedido de I/O que não pode ser servido imediatamente (teclado, etc.) ou pede ao SO pare esperar $\rightarrow$ passa ao estado de **bloqueado**;
+- É _desafetado_ porque aparece um processo com maior "prioridade" ou o seu _quantum_ expira $\rightarrow$ passa ao estado de **pronto**.
+
+Pretende-se maximizar a utilização do CPU tendo em atenção outros aspetos:
+- Tempo de resposta para aplicações interativas;
+- Utilização de dispositivos I/O;
+- Justiça na distribuição do tempo de CPU.
+
+A decisão de escalonar um processo pode ser tomada em diversas alturas:
+- Quando o processo é **bloqueado**;
+- Quando o processo passa a **pronto a executar**;
+- Quando se completa um operação de I/O;
+- Quando um processo termina.
+
+Por fim, diferentes algoritmos de escalonamento ([[Gestão de Processos#Políticas de Escalonamento|políticas de escalonamento]]) visam objetivos diferentes:
+- Diminuir o tempo de resposta (reduzindo o tempo de espera para determinados processos);
+- Maximizar a utilização do CPU.
+
 #### Políticas de Escalonamento
+Alguns algoritmos de escalonamento:
+- [[Gestão de Processos#First Come, First Served (FCFS)|FCFS (First Come, First Served)]]
+- [[#Shortest Job First (SJF)|SJF (Shortest Job First)]]
+- SRTF (Shortest Remaining Time First)
+- [[#Preemptive Priority|Preemptive Priority Scheduling]]
+- [[#Round Robin (RR)|RR (Round Robin)]]
+
+##### First Come, First Served (FCFS)
+**Características**:
+- A _ready list_ é uma fila First In, First Out (FIFO);
+- Os processos são colocados no fim da fila e selecionado o da frente;
+- Método cooperativo;
+- Nada apropriado para ambientes interativos.
+
+Uma vantagem óbvia do FCFS é a sua simplicidade de implementação: lista de processos por ordem de criação do processo (_batch_).
+Sujeito a tempos de espera com grandes flutuações, dependendo da ordem de chegada e das características dos processos (_efeito comboio_).
+
+Parece haver vantagens em escalonar os processos mais curtos à frente…
+
+##### Shortest Job First (SJF)
+A ideia é escalonar o processo mais curto primeiro.
+**Possibilidades**:
+- Desafetação forçada (SRTF) - interrompe-se o processo em execução se aparecer um mais curto;
+- Cooperativo - mesmo na presença de um processo mais curto, pode aguardar-se pela terminação ou bloqueio voluntário do processo em execução. E nessa altura escolhe-se o mais curto.
+
+##### Preemptive Priority
+**Características**:
+- Associa uma _prioridade_ (geralmente um inteiro) a cada processo;
+- A _ready queue_ é uma fila seriada por prioridades;
+- Escalona sempre o processo na frente da fila;
+- Se aparece um processo com maior prioridade do que o que está a executar, faz a troca dos processos.
+
+**Problema**: _starvation_.
+**Solução**: _envelhecimento_ - aumenta a prioridade dos processos pouco a pouco de forma a que inevitavelmente executem e terminem.
+É necessário justificar quando e quanto aumenta.
+
+##### Round Robin (RR)
+**Características**:
+- Dá a cada processo um intervalo de tempo fixo de CPU de cada vez;
+- Quando um processo esgota o seu _quantum_, retira-o do CPU e volta a colocá-lo no fim da fila;
+- Ignorando os _overheads_ do escalonamento, cada um dos $n$ processos CPU-bound terá ($1/n$) do tempo disponível de CPU.
+
+**Problemas**:
+- Se o _quantum_ for (muito) grande, o RR tende a comportar-se como o FCFS;
+- Se o _quantum_ for (muito) pequeno, então o _overhead_ de mudanças de contexto tende a dominar degradando os níveis de utilização útil de CPU;
+- Favorece processos que libertem o CPU ao fim de pouco tempo (aproxima-se do **shortest**) mas sem exigir conhecimento rigoroso do tempo de cada _CPU burst_.
+
+#### Níveis de Escalonamento
+Uma vez que há inúmeros critérios de escalonamento e muitas variáveis a considerar para saber qual o **melhor** processo a escolher, é habitual dividir a questão em 2 ou 3 níveis:
+- **Nível 0** $\rightarrow$ só despacha o que está em RAM (RR ou MLQ)
+- **Nível 1** $\rightarrow$ decide que processos são multiprogramados, por indicação do gestor de memória
+- **Nível 2** $\rightarrow$ não deixa criar processos nas horas de ponta, por decisão de quem administra e conhece a carga diária
