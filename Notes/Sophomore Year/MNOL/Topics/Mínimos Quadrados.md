@@ -175,7 +175,7 @@ A=\begin{pmatrix}
 \end{pmatrix}
 $$
 
-A resolução do sistema linear das equações normais fornece os coeficientes pretendidos $c_1,c_2,…,c_n$ e deve ser feita por um método direto e estável - [[Sistemas de equações lineares#Método Direto de Eliminação de Gauss com Pivotagem Parcial (EGPP)|EGPP]]
+A resolução do sistema linear das equações normais fornece os coeficientes pretendidos $c_1,c_2,…,c_n$ e deve ser feita por um método direto e estável - [[Sistemas de Equações Lineares#Método Direto de Eliminação de Gauss com Pivotagem Parcial (EGPP)|EGPP]]
 
 #### Passos para Calcular o Modelo Linear não Polinomial
 Para calcular o modelo na forma:

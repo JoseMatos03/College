@@ -1,5 +1,5 @@
 ## Reformulação do Método de Newton para uma Equação não Linear
-Para resolver $f(x) = 0, f:\mathbb R \rightarrow \mathbb R$, a equação iterativa do [[Equações não lineares#Método De Newton|método de Newton]] pode ser colocada na forma:
+Para resolver $f(x) = 0, f:\mathbb R \rightarrow \mathbb R$, a equação iterativa do [[Equações não Lineares#Método De Newton|método de Newton]] pode ser colocada na forma:
 
 $$
 x_{k+1} = x_k + \Delta x_k,\space k=1,2,...
@@ -98,7 +98,7 @@ $$
 
 isto é,
 - o vetor $\Delta x^{(k)}$ (em cada iteração) é a **solução do sistema linear** (2) e
-- é obtido pelo método [[Sistemas de equações lineares#Método Direto de Eliminação de Gauss com Pivotagem Parcial (EGPP)|eliminação de Gauss com Pivotagem Parcial (EGPP)]].
+- é obtido pelo método [[Sistemas de Equações Lineares#Método Direto de Eliminação de Gauss com Pivotagem Parcial (EGPP)|eliminação de Gauss com Pivotagem Parcial (EGPP)]].
 
 ### Critério de Paragem
 - estimativa do [[Erros#Erro Relativo|erro relativo]] da aproximação
@@ -118,7 +118,7 @@ $\varepsilon_1\text{ e }\varepsilon_2$ quantidades positivas e próximas de zero
 ## Algoritmo do Método de Newton para Sistemas de Equações não Lineares
 1. Fornecer $x^{(1)}$;
 2. Fazer $k=1$;
-3. Resolver o sistema linear abaixo por [[Sistemas de equações lineares#Método Direto de Eliminação de Gauss com Pivotagem Parcial (EGPP)|EGPP]] para calcular o vetor $\Delta x^{(k)}$;
+3. Resolver o sistema linear abaixo por [[Sistemas de Equações Lineares#Método Direto de Eliminação de Gauss com Pivotagem Parcial (EGPP)|EGPP]] para calcular o vetor $\Delta x^{(k)}$;
 
 $$
 J(x^{(k)})\Delta x^{(k)}=-f(x^{(k)})
@@ -144,7 +144,7 @@ f(x^*)\leftarrow f(x^{(k+1)})
 \end{array}
 $$
 
-### Condições de [[Equações não lineares#Método De Newton#Condições De Convergência|Convergência do Método de Newton]]
+### Condições de [[Equações não Lineares#Método De Newton#Condições De Convergência|Convergência do Método de Newton]]
 Para resolver o sistema:
 
 $$
