@@ -6,3 +6,4 @@
 5. [[Interpolação Polinomial]]
 6. [[Mínimos Quadrados]]
 7. [[Interpolação Spline]]
+8. [[Integração Numérica]]
