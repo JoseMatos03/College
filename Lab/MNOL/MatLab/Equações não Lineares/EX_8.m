@@ -15,5 +15,5 @@ op2=optimset('tolx',1e-3);
 
 % função
 function f = exerc8(x)
-    f = 7*(2-0.9^(x))-10;
+f = 7*(2-0.9^(x))-10;
 end
