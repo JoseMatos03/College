@@ -8,7 +8,7 @@
 ## Sophomore Year
 1. [[Base de Dados]]
 2. [[Investigação Operacional]]
-3. [[Metodos Numéricos]]
+3. [[Métodos Numéricos e Otimização não Linear]]
 4. [[Programação Orientada a Objetos]]
 5. [[Redes de Computadores]]
 6. [[Sistemas Operativos]]
