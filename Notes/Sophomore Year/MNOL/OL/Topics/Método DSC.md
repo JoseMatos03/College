@@ -151,3 +151,105 @@ $$
 2. Se o critério de paragem _não se verificar_, o processo repete-se e o minimizante da quadrática, $x^*(q)$, passa a ser o $x_1$ da nova iteração. A perturbação $\delta$ também deve ser reduzida através de: $\delta = M\delta$, com $M<1$.
 
 ## Formulação de um Problema sem Restrições
+Encontrar mínimo/máximo da função:
+
+**Exemplo 1:** ^3e8fb4
+
+$$
+\underset{x\in R^2}{min}\space f(x)\equiv(x_1-2)^2+(x_2-1)^2
+$$
+
+![[Screenshot 2024-04-17 at 15.41.45.png]]
+**Exemplo 2:**
+
+$$
+\underset{x\in R^2}{max}\space f(x)\equiv 2(-x_1^2-x_2^2+1)+x_1
+$$
+
+![[Screenshot 2024-04-17 at 15.44.12.png]]
+**Exemplo 3:**
+
+$$
+\underset{x\in R^2}{min}\space f(x)\equiv 3x_1^2-x_2^2+x_1^3
+$$
+
+![[Screenshot 2024-04-17 at 15.45.24.png]]
+Ponto sela em $(0,0)$.
+
+### Notação
+Vetor _gradiente_ da função $f(x) \rightarrow x\in R^n$
+
+$$
+\nabla f(x)=
+\begin{pmatrix}
+\frac{\partial f}{\partial x_1} \\
+\frac{\partial f}{\partial x_2} \\
+\vdots \\
+\frac{\partial f}{\partial x_n} \\
+\end{pmatrix}
+\text{ vetor de }R^n
+$$
+
+Matriz _Hessiana_ da função $f(x)$
+
+$$
+\nabla^2 f(x)=
+\begin{pmatrix}
+	\frac{\partial^2f}{\partial x_1^2} && \frac{\partial^2f}{\partial x_2 \partial x_1} && \cdots && \frac{\partial^2f}{\partial x_n \partial x_1} \\
+	\frac{\partial^2f}{\partial x_1 \partial x_2} && \frac{\partial^2f}{\partial x_2^2} && \cdots && \frac{\partial^2f}{\partial x_n \partial x_2} \\
+	\vdots && \vdots && \ddots && \vdots \\
+	\frac{\partial^2f}{\partial x_1 \partial x_n} && \frac{\partial^2f}{\partial x_2 \partial x_n} && \cdots && \frac{\partial^2f}{\partial x_n^2}
+\end{pmatrix}
+\text{ matriz simétrica de } n \times n
+$$
+
+### Condições de Otimalidade
+Assume-se $f(x)$ continuamente diferenciável até à 2ª ordem.
+
+**Condição necessária (e suficiente) de 1ª ordem:**
+Se $x^*$ é uma solução do problema, então o vetor gradiente calculado em $x^*$ anula-se:
+
+$$
+\nabla f(x^*) = 0
+$$
+
+Os _pontos estacionários_ da função $f$ são os pontos que verificam
+
+$$
+\nabla f(x) = 0
+$$
+
+$$
+\begin{cases}
+	\text{minimizante (como no exemplo 1)} \\
+	\text{maximizante (como no exemplo 2)} \\
+	\text{ponto sela (como no exemplo 3 e 4)} \\
+\end{cases}
+$$
+
+**Condição necessária de 2ª ordem:**
+Se $x^*$ é uma solução do problema que satisfaz a condição de 1ª ordem, então $\nabla^2 f(x^*)$ é semi-definida positiva.
+
+**Condição suficiente de 2ª ordem:**
+Se $x^*$ é um ponto que verifica a condição de 1ª ordem e se a matriz Hessiana calculada em $x^*$, $\nabla^2 f(x^*)$, é _definida positiva_, então $x^*$ é um **minimizante** local forte.
+
+**Condição suficiente de 2ª ordem:**
+Se $x^*$ é um ponto que verifica a condição de 1ª ordem e se a matriz Hessiana calculada em $x^*$, $\nabla^2f(x^*)$, é _definida negativa_, então $x^*$ é um **maximizante** local forte.
+
+Assumindo $\nabla f(x^*)=0$:
+![[Screenshot 2024-04-17 at 15.50.30.png]]
+
+## Definições
+- Uma matriz diz-se definida positiva se os determinantes das submatrizes principais são positivos…
+- se pelo menos um dos determinantes das submatrizes principais é zero e os outros são positivos, a matriz diz-se semi-definida positiva.
+- Uma matriz diz-se definida negativa se os determinantes das submatrizes principais têm sinais alternados, sendo o de ordem 1 negativo…
+- se pelo menos um dos determinantes das submatrizes principais é zero e os outros têm sinais alternados, sendo o de ordem 1 negativo, a matriz diz-se semi-definida negativa.
+- Uma matriz diz-se indefinida se os sinais dos determinantes das submatrizes principais não verificam nenhuma das 4 situações acima mencionadas.
+
+## Resumo
+Seja $x^*$ um ponto para o qual $\nabla f(x^*) = 0$ e $\nabla^2f(x^*) \neq$ matriz nula:
+- Se $\nabla^2 f(x^*)$ é definida positiva então $x^*$ é _minimizante_
+- Se $\nabla^2 f(x^*)$ é definida negativa então $x^*$ é _maximizante_
+- Se $\nabla^2 f(x^*)$ é semi-definida positiva então $x^*$ é _minimizante ou ponto sela_
+- Se $\nabla^2 f(x^*)$ é semi-definida negativa então $x^*$ é _maximizante ou ponto sela_
+- Se $\nabla^2 f(x^*)$ é indefinida então $x^*$ é _ponto sela_
